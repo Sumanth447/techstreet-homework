@@ -27,6 +27,6 @@ export class LoginComponent {
     this._service.setDirective(1);
   }
   save() {
-   this._loginService.login();
+   this._loginService.login(this.loginForm.value.username,this.loginForm.value.password);
   }
 }
