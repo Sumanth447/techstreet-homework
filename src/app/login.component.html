@@ -1,6 +1,12 @@
 <h2>Login</h2>
-<form [formGroup]="loginForm" (submit)="save()">
-  <input placeholder="Login" name="username" formControlName="username" />
-  <input placeholder="Password" type="password" name="password" formControlName="password" />
-  <button type="Submit">Submit</button>
+<form [formGroup]="loginForm" (submit)="save()" novalidate>
+  <input placeholder="Login" id="username" required formControlName="username" />
+    <div *ngIf="this.loginForm.controls.username.errors?.required" class="alert">
+      Username is required.
+  </div>
+  <input placeholder="Password" type="password" id="password" required formControlName="password" />
+    <div *ngIf="this.loginForm.controls.password.errors?.required"  class="alert">
+      Password is required.
+  </div>
+  <button type="Submit" [disabled]="!loginForm.valid">Submit</button>
 </form>
